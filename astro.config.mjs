@@ -3,7 +3,11 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+  base: '/dist',
   integrations: [react()],
+  build: {
+    format: 'file'
+  },
   vite: {
     plugins: [tailwindcss()]
   }
