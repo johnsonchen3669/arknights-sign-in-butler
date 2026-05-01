@@ -25,6 +25,7 @@ export function PopupApp() {
   const [status, setStatus] = useState<StatusViewModel>(() => buildStatusViewModel(INITIAL_STATE));
   const [message, setMessage] = useState('');
   const [messageTone, setMessageTone] = useState<'success' | 'error' | 'neutral'>('neutral');
+  const readyMessage = translate('readyStatus', 'Ready');
 
   useEffect(() => {
     let isMounted = true;
@@ -43,10 +44,23 @@ export function PopupApp() {
     };
   }, []);
 
+  useEffect(() => {
+    if (messageTone !== 'success' || message !== readyMessage) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setMessage('');
+      setMessageTone('neutral');
+    }, 3000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [message, messageTone, readyMessage]);
+
   const handleSave = async () => {
     try {
       await savePopupState(state.checkTime, state.signInMode);
-      setMessage(translate('readyStatus', 'Ready'));
+      setMessage(readyMessage);
       setMessageTone('success');
     } catch (error) {
       setMessage(error instanceof Error ? error.message : translate('signInFailed', 'Failed, please try again'));
@@ -74,7 +88,7 @@ export function PopupApp() {
         : 'text-slate-500';
 
   return (
-    <div className="w-popup bg-panel px-[15px] py-[15px] text-[#333333]">
+    <div className="w-popup bg-panel px-3.75 py-3.75 text-[#333333]">
       <header className="mb-4 flex items-center border-b border-slate-200 pb-2.5">
         <img alt="Icon" className="mr-2.5 h-6 w-6" src="/icon.png" />
         <h1 className="m-0 text-base text-ink">{translate('headerTitle', 'Arknights Sign-in Butler')}</h1>

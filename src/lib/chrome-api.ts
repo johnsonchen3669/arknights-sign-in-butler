@@ -47,10 +47,29 @@ export function getSelectedGameIds(signInMode: SignInMode): GameId[] {
 export function loadPopupState(): Promise<PopupState> {
   return new Promise((resolve) => {
     chrome.storage.local.get(['checkTime', 'signInMode', 'lastCheckInDateByGame'], (result) => {
-      resolve({
-        checkTime: result.checkTime || DEFAULT_CHECK_TIME,
-        signInMode: (result.signInMode || DEFAULT_SIGN_IN_MODE) as SignInMode,
+      const signInMode = (result.signInMode || DEFAULT_SIGN_IN_MODE) as SignInMode;
+      const checkTime = result.checkTime || DEFAULT_CHECK_TIME;
+      const popupState: PopupState = {
+        checkTime,
+        signInMode,
         lastCheckInDateByGame: result.lastCheckInDateByGame || {}
+      };
+
+      if (result.checkTime) {
+        resolve(popupState);
+        return;
+      }
+
+      // Keep the first-run UI state and background schedule in sync.
+      chrome.storage.local.set({ checkTime, signInMode }, () => {
+        if (chrome.runtime.lastError) {
+          resolve(popupState);
+          return;
+        }
+
+        chrome.runtime.sendMessage({ action: 'updateSchedule', time: checkTime }, () => {
+          resolve(popupState);
+        });
       });
     });
   });
