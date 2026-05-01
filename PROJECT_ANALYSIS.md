@@ -1,4 +1,4 @@
-# SKPORT Auto Sign-in 專案分析
+# Arknights Sign-in Butler 專案分析
 
 ## 1. 專案定位
 
@@ -260,6 +260,73 @@ isTodayAlreadyCompleted() 在沒有找到 lottie 時，會再看 reward card 是
 - 加入更穩健的簽到成功判定策略。
 - 如果未來支持更多地區或網站變體，可再抽象化目標站點設定。
 
+### 前端遷移規劃
+
+如果後續要把目前以原生 HTML / CSS / JavaScript 撰寫的 popup 與靜態說明頁搬遷到現代化前端架構，建議採以下技術組合：
+
+- Astro
+  - 作為前端頁面與靜態內容的主框架。
+  - 適合這類以靜態 UI 為主、互動點集中在少數區塊的專案。
+  - 可讓 popup、說明頁、未來文件頁共用更清楚的版型與資源管理方式。
+
+- React Islands
+  - 僅把真正需要互動的區塊做成 React 元件，例如簽到模式選擇、狀態卡片、設定表單。
+  - 避免整個 popup 都變成完整 SPA，維持 Chrome extension popup 輕量、載入快的特性。
+  - 也能把目前散在 popup.js 的狀態更新與事件處理封裝成可維護的元件邏輯。
+
+- Tailwind CSS
+  - 作為樣式系統，取代目前直接寫在 popup.html 裡的 inline style 與頁內 CSS。
+  - 有助於統一 spacing、字級、顏色與元件外觀，降低之後 UI 修改成本。
+  - 若未來要做亮色 / 暗色主題、狀態色系或多頁面風格一致性，Tailwind 也比較容易擴充。
+
+- pnpm
+  - 作為套件管理工具，統一依賴安裝、script 執行與 lockfile 管理。
+  - 比 npm / yarn 更適合這種依賴量不大、但希望安裝速度穩定且 lockfile 清楚的專案。
+  - 後續若引入 Astro、React、Tailwind、ESLint、Prettier 或測試工具，pnpm 也較容易維持一致的依賴樹。
+
+### 建議遷移範圍
+
+前端遷移建議先聚焦在 popup UI，不要一開始就重寫 background.js 與 content.js：
+
+- 第一階段
+  - 用 Astro 建立 popup 頁面殼層。
+  - 把目前 popup 的資訊卡、設定卡、說明區塊拆成元件。
+
+- 第二階段
+  - 將簽到模式切換、時間設定、狀態顯示改寫成 React islands。
+  - 抽出與 chrome.storage、chrome.runtime.sendMessage 溝通的前端 service 層。
+
+- 第三階段
+  - 導入 Tailwind，取代頁內樣式與重複的 inline style。
+  - 補上 lint、format 與 build script，統一透過 pnpm 執行。
+
+### 建議目錄方向
+
+若啟動遷移，可考慮調整為類似下列結構：
+
+- src/pages/
+  - 放 Astro 頁面，例如 popup 頁。
+
+- src/components/
+  - 放 Astro 與 React 共用元件。
+
+- src/components/islands/
+  - 放需要互動的 React islands。
+
+- src/lib/
+  - 放與 chrome.storage、runtime message、設定轉換相關的工具函式。
+
+- public/
+  - 放 icon 與靜態資產。
+
+### 遷移注意事項
+
+- Manifest V3 的 background.js 與 content.js 仍然屬於 extension runtime 核心邏輯，不建議和 UI 一起大幅重寫。
+- Popup 頁面可以先遷移，但與 Chrome Extension 互動的 API 封裝要維持簡單，避免把 UI 框架與 extension 邏輯耦合過深。
+- 若採 Astro + React islands，應優先追求低 hydration 成本，而不是把所有內容都交給 React。
+- Tailwind 需要先定義設計 token，否則很容易只是把原本散亂的樣式改寫成另一種散亂的 utility class。
+- 使用 pnpm 後，README 與專案文件也要同步改成 pnpm 指令，避免團隊成員混用 npm。
+
 ## 11. 維護結論
 
 這個專案屬於小型但目的明確的實用型瀏覽器擴充功能。整體設計沒有過度工程化，對單一網站自動簽到任務來說很合適，近期版本也已補上最重要的重複開頁問題。
@@ -269,5 +336,7 @@ isTodayAlreadyCompleted() 在沒有找到 lottie 時，會再看 reward card 是
 - 強化成功驗證
 - 改善失敗可觀測性
 - 降低對脆弱 selector 的依賴
+
+如果要同步提升可維護性與 UI 擴充能力，則可把 popup 前端逐步遷移到 Astro + React islands + Tailwind，並以 pnpm 統一專案依賴管理；這樣能在不大動 extension 核心邏輯的前提下，先改善前端結構與開發體驗。
 
 以上三點做好後，這個專案的可靠度會明顯提升。

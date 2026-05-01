@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Astro build artifacts
+.astro/
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Packaging artifacts
+*.zip
+*.crx
+
+# Local environment files
+.env
+.env.*
+!.env.example

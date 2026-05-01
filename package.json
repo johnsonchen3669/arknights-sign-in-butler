@@ -1,0 +1,29 @@
+{
+  "name": "arknights-sign-in-butler",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.9.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@astrojs/react": "^4.3.0",
+    "@tailwindcss/vite": "^4.1.5",
+    "@types/chrome": "^0.0.314",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "astro": "^5.7.1",
+    "tailwindcss": "^4.1.5",
+    "typescript": "^5.8.3"
+  }
+}
