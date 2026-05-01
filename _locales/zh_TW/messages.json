@@ -1,0 +1,89 @@
+{
+    "appName": {
+        "message": "SKPORT 自動簽到"
+    },
+    "appDesc": {
+        "message": "每日自動簽到 Endfield 與明日方舟遊戲官網"
+    },
+    "headerTitle": {
+        "message": "SKPORT 自動簽到"
+    },
+    "lastCheckInLabel": {
+        "message": "上次簽到:"
+    },
+    "statusLabel": {
+        "message": "狀態:"
+    },
+    "manualBtnText": {
+        "message": "立即手動簽到"
+    },
+    "noRecord": {
+        "message": "無紀錄"
+    },
+    "idleStatus": {
+        "message": "待機中"
+    },
+    "readyStatus": {
+        "message": "準備就緒"
+    },
+    "startingSignIn": {
+        "message": "正在啟動簽到..."
+    },
+    "signInFailed": {
+        "message": "啟動失敗，請重試"
+    },
+    "alreadySignedIn": {
+        "message": "今日已簽到"
+    },
+    "notSignedInYet": {
+        "message": "今日尚未簽到"
+    },
+    "signInSuccessNotify": {
+        "message": "自動簽到完成"
+    },
+    "viewAllRewards": {
+        "message": "查看全部獎勵"
+    },
+    "viewAllRewardsEndfield": {
+        "message": "查看全部獎勵"
+    },
+    "viewAllRewardsArknights": {
+        "message": "查看全部"
+    },
+    "gameSelectionLabel": {
+        "message": "簽到模式:"
+    },
+    "gameModeEndfield": {
+        "message": "終末地"
+    },
+    "gameModeArknights": {
+        "message": "明日方舟"
+    },
+    "gameModeBoth": {
+        "message": "兩者都觸發"
+    },
+    "gameNameEndfield": {
+        "message": "終末地"
+    },
+    "gameNameArknights": {
+        "message": "明日方舟"
+    },
+    "autoSignInTimeLabel": {
+        "message": "自動簽到時間:"
+    },
+    "saveSettingsBtnText": {
+        "message": "儲存設定"
+    },
+    "backgroundInfoText": {
+        "message": "若瀏覽器為開啓狀態時，將自動開啓新分頁簽到；若關閉時則開啓瀏覽器簽到。兩者皆於背景執行，不會打擾到簽到當下的其他操作。"
+    },
+    "backgroundPermissionText": {
+        "message": "⚠️ 記得先開啓瀏覽器「執行背景應用程式」的權限，自動開啓瀏覽器的功能才會生效。"
+    },
+    "backgroundSettingsPath": {
+        "message": "Chrome：[設定] > [系統] > [Google Chrome 關閉時繼續執行背景應用程式]"
+    },
+    "githubLinkText": {
+        "message": "GitHub"
+    }
+}

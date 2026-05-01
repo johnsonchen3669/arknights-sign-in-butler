@@ -1,0 +1,89 @@
+{
+    "appName": {
+        "message": "SKPORT Auto Sign-in"
+    },
+    "appDesc": {
+        "message": "Auto sign-in daily for Endfield and Arknights official SKPORT pages"
+    },
+    "headerTitle": {
+        "message": "SKPORT Auto Sign-in"
+    },
+    "lastCheckInLabel": {
+        "message": "Last Check-in:"
+    },
+    "statusLabel": {
+        "message": "Status:"
+    },
+    "manualBtnText": {
+        "message": "Manual Sign-in Now"
+    },
+    "noRecord": {
+        "message": "No Record"
+    },
+    "idleStatus": {
+        "message": "Idle"
+    },
+    "readyStatus": {
+        "message": "Ready"
+    },
+    "startingSignIn": {
+        "message": "Starting sign-in..."
+    },
+    "signInFailed": {
+        "message": "Failed, please try again"
+    },
+    "alreadySignedIn": {
+        "message": "Already signed in today"
+    },
+    "notSignedInYet": {
+        "message": "Not signed in today"
+    },
+    "signInSuccessNotify": {
+        "message": "Auto sign-in completed"
+    },
+    "viewAllRewards": {
+        "message": "View all rewards"
+    },
+    "viewAllRewardsEndfield": {
+        "message": "View all rewards"
+    },
+    "viewAllRewardsArknights": {
+        "message": "View all"
+    },
+    "gameSelectionLabel": {
+        "message": "Sign-in Mode:"
+    },
+    "gameModeEndfield": {
+        "message": "Endfield"
+    },
+    "gameModeArknights": {
+        "message": "Arknights"
+    },
+    "gameModeBoth": {
+        "message": "Both"
+    },
+    "gameNameEndfield": {
+        "message": "Endfield"
+    },
+    "gameNameArknights": {
+        "message": "Arknights"
+    },
+    "autoSignInTimeLabel": {
+        "message": "Auto Sign-in Time:"
+    },
+    "saveSettingsBtnText": {
+        "message": "Save Settings"
+    },
+    "backgroundInfoText": {
+        "message": "When the browser is open, a new tab will be opened for sign-in. When the browser is closed, it will launch the browser to sign in. Both run in the background without interrupting your other activities."
+    },
+    "backgroundPermissionText": {
+        "message": "⚠️ Remember to enable \"Continue running background apps\" permission in your browser for the auto-launch feature to work."
+    },
+    "backgroundSettingsPath": {
+        "message": "Chrome: [Settings] > [System] > [Continue running background apps when Google Chrome is closed]"
+    },
+    "githubLinkText": {
+        "message": "GitHub"
+    }
+}
