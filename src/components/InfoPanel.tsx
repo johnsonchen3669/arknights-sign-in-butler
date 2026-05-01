@@ -2,7 +2,8 @@ import { translate } from '@/lib/chrome-api';
 
 export function InfoPanel() {
   return (
-    <section className="mb-3 rounded-lg bg-info-bg px-3 py-2.5 text-[11px] leading-5 text-info-ink">
+    <section className="mb-3 rounded-[20px] border border-white/70 bg-info-bg/88 px-3.5 py-3 text-[11px] leading-5 text-info-ink shadow-card backdrop-blur-sm">
+      <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-info-ink/80">Background</div>
       <p className="mb-2">{translate('backgroundInfoText', 'Background execution info')}</p>
       <p className="mb-2">
         {translate(

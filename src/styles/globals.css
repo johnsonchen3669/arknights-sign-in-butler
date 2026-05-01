@@ -1,28 +1,38 @@
 @import "tailwindcss";
 
 @theme {
-  --color-panel: #f5f5f7;
-  --color-ink: #1a1a1a;
-  --color-muted: #666666;
-  --color-primary: #0f6cbd;
-  --color-primary-dark: #0b4f8a;
-  --color-info-bg: #e8f4fd;
-  --color-info-ink: #1565c0;
-  --color-success: #4caf50;
-  --color-warning: #ff9800;
+  --color-panel: #f4f1eb;
+  --color-ink: #241916;
+  --color-muted: #6f625e;
+  --color-primary: #b4472d;
+  --color-primary-dark: #8f341f;
+  --color-secondary: #1f4e5f;
+  --color-secondary-dark: #163947;
+  --color-info-bg: #e2eef2;
+  --color-info-ink: #245165;
+  --color-success: #2f8f68;
+  --color-warning: #c7771a;
+  --color-ring: rgba(180, 71, 45, 0.18);
 
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-card: 0 14px 28px rgba(50, 33, 28, 0.08);
   --spacing-popup: 320px;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  background: #f5f5f7;
-  color: #333333;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(180, 71, 45, 0.16), transparent 38%),
+    linear-gradient(180deg, #fbf8f4 0%, #f1ece6 100%);
+  color: #332824;
+  font-family: 'Segoe UI Variable Text', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
 }
 
 a {
   color: inherit;
+}
+
+button,
+input {
+  font: inherit;
 }
