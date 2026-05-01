@@ -25,22 +25,44 @@ export function PopupApp() {
   const [status, setStatus] = useState<StatusViewModel>(() => buildStatusViewModel(INITIAL_STATE));
   const [message, setMessage] = useState('');
   const [messageTone, setMessageTone] = useState<'success' | 'error' | 'neutral'>('neutral');
+  const localizedTitle = translate('headerTitle', 'Arknights Sign-in Butler');
   const readyMessage = translate('readyStatus', 'Ready');
 
-  useEffect(() => {
-    let isMounted = true;
+  const refreshState = async () => {
+    const loadedState = await loadPopupState();
+    setState(loadedState);
+    setStatus(buildStatusViewModel(loadedState));
+    return loadedState;
+  };
 
-    loadPopupState().then((loadedState) => {
-      if (!isMounted) {
+  useEffect(() => {
+    void refreshState();
+  }, []);
+
+  useEffect(() => {
+    document.title = localizedTitle;
+  }, [localizedTitle]);
+
+  useEffect(() => {
+    const listener = (
+      changes: Record<string, chrome.storage.StorageChange>,
+      areaName: string
+    ) => {
+      if (areaName !== 'local') {
         return;
       }
 
-      setState(loadedState);
-      setStatus(buildStatusViewModel(loadedState));
-    });
+      if (!changes.checkTime && !changes.signInMode && !changes.lastCheckInDateByGame) {
+        return;
+      }
+
+      void refreshState();
+    };
+
+    chrome.storage.onChanged.addListener(listener);
 
     return () => {
-      isMounted = false;
+      chrome.storage.onChanged.removeListener(listener);
     };
   }, []);
 
@@ -60,6 +82,7 @@ export function PopupApp() {
   const handleSave = async () => {
     try {
       await savePopupState(state.checkTime, state.signInMode);
+      await refreshState();
       setMessage(readyMessage);
       setMessageTone('success');
     } catch (error) {
@@ -91,7 +114,7 @@ export function PopupApp() {
     <div className="w-popup bg-panel px-3.75 py-3.75 text-[#333333]">
       <header className="mb-4 flex items-center border-b border-slate-200 pb-2.5">
         <img alt="Icon" className="mr-2.5 h-6 w-6" src="/icon.png" />
-        <h1 className="m-0 text-base text-ink">{translate('headerTitle', 'Arknights Sign-in Butler')}</h1>
+        <h1 className="m-0 text-base text-ink">{localizedTitle}</h1>
       </header>
 
       <StatusCard status={status} />

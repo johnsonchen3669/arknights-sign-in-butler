@@ -9,6 +9,9 @@ export default defineConfig({
     format: 'file'
   },
   vite: {
+    build: {
+      assetsInlineLimit: 0
+    },
     plugins: [tailwindcss()]
   }
 });

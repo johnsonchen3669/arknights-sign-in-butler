@@ -19,12 +19,10 @@
 **EN:**
 - Renamed the project and repository links to Arknights Sign-in Butler
 - Added pnpm-based development workflow documentation and TypeScript project configuration
-- Stopped versioning local planning documents and moved project analysis notes to a local-only plans directory
 
 **中文：**
 - 將專案名稱與 repository 連結統一更新為 Arknights Sign-in Butler
 - 補上以 pnpm 為主的開發流程文件與 TypeScript 專案設定
-- 停止追蹤本地計畫文件，並將分析筆記移到僅本地使用的 plans 資料夾
 
 ---
 
