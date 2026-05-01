@@ -19,7 +19,7 @@ const SITE_CONFIGS = {
 
 const siteConfig = getSiteConfig();
 
-console.log('SKPORT Auto Sign-in script loaded', siteConfig && siteConfig.id);
+console.log('Arknights Sign-in Butler script loaded', siteConfig && siteConfig.id);
 
 const MAX_ATTEMPTS = 20;
 const RETRY_INTERVAL = 2000;

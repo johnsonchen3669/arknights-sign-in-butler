@@ -1,12 +1,12 @@
 {
     "appName": {
-        "message": "SKPORT Auto Sign-in"
+        "message": "Arknights Sign-in Butler"
     },
     "appDesc": {
-        "message": "Auto sign-in daily for Endfield and Arknights official SKPORT pages"
+        "message": "Auto sign-in daily for Arknights and Arknights: Endfield official SKPORT pages"
     },
     "headerTitle": {
-        "message": "SKPORT Auto Sign-in"
+        "message": "Arknights Sign-in Butler"
     },
     "lastCheckInLabel": {
         "message": "Last Check-in:"

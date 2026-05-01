@@ -17,7 +17,7 @@ const DEFAULT_SIGN_IN_MODE = 'endfield';
 let isAutoCheckRunning = false;
 
 chrome.runtime.onInstalled.addListener((details) => {
-    console.log('SKPORT Auto Sign-in Extension Installed');
+    console.log('Arknights Sign-in Butler Extension Installed');
 
     // On first install, open settings page for user to configure
     if (details.reason === 'install') {

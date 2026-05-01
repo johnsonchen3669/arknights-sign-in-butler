@@ -1,12 +1,12 @@
 {
     "appName": {
-        "message": "SKPORT 自動簽到"
+        "message": "明日方舟簽到管家"
     },
     "appDesc": {
-        "message": "每日自動簽到 Endfield 與明日方舟遊戲官網"
+        "message": "每日自動簽到《明日方舟》與《明日方舟：終末地》SKPORT 官網"
     },
     "headerTitle": {
-        "message": "SKPORT 自動簽到"
+        "message": "明日方舟簽到管家"
     },
     "lastCheckInLabel": {
         "message": "上次簽到:"
