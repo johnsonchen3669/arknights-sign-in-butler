@@ -18,3 +18,7 @@ desktop.ini
 .env
 .env.*
 !.env.example
+
+# Local planning documents
+PROJECT_ANALYSIS.md
+plans/

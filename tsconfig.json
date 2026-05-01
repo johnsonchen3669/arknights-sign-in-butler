@@ -1,13 +1,12 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": ".",
     "types": [
       "chrome"
     ],
     "paths": {
       "@/*": [
-        "src/*"
+        "./src/*"
       ]
     }
   },
