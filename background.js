@@ -21,8 +21,8 @@ chrome.runtime.onInstalled.addListener((details) => {
 
     // On first install, open settings page for user to configure
     if (details.reason === 'install') {
-        // Open popup.html as a tab for initial setup
-        chrome.tabs.create({ url: chrome.runtime.getURL('popup.html') });
+        // Open the built popup entry so first-run setup uses the current UI.
+        chrome.tabs.create({ url: chrome.runtime.getURL('dist/popup.html') });
         console.log('First install detected - opening settings page');
     }
     
